@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Proveedor</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h2>Agregar Proveedor</h2>
+<form th:action="@{/guardarProveedor}" th:object="${proveedor}" method="post">
+    <label for="nombreProveedor">Nombre:</label>
+    <input type="text" id="nombreProveedor" name="nombreProveedor" th:field="*{nombreProveedor}" required>
+    <label for="telefonoProveedor">Teléfono:</label>
+    <input type="text" id="telefonoProveedor" name="telefonoProveedor" th:field="*{telefonoProveedor}" required>
+    <label for="direccionProveedor">Dirección:</label>
+    <input type="text" id="direccionProveedor" name="direccionProveedor" th:field="*{direccionProveedor}" required>
+    <label for="emailProveedor">Email:</label>
+    <input type="email" id="emailProveedor" name="emailProveedor" th:field="*{emailProveedor}" required>
+    <label for="webProveedor">Sitio Web:</label>
+    <input type="text" id="webProveedor" name="webProveedor" th:field="*{webProveedor}" required>
+    <label for="estadoProveedor">Estado:</label>
+    <select id="estadoProveedor" name="estadoProveedor" th:field="*{estadoProveedor}" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <button type="submit">Guardar Proveedor</button>
+</form>
+<button><a th:href="@{/proveedores}">Volver a la lista de Proveedores</a></button>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 th:text="${titulo}">default</h1>
+    <table >
+        <thead>
+        <tr>
+            <th> ID</th>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+    <tbody>
+    <tr th:each="producto : ${productos}">
+        <th:block th:if="${producto != null}">
+            <td th:text="${producto.idProducto}"></td>
+            <td th:text="${producto.codigoEanProducto}"></td>
+            <td th:text="${producto.nombreProducto}"></td>
+            <td th:text="${producto.descripcionProducto}"></td>
+            <td th:text="${producto.precioProducto}"></td>
+            <td th:text="${producto.stockProducto}"></td>
+            <td > <button><a th:href="@{/eliminarProducto/{id}(id=${producto.idProducto})}">Eliminar</a>
+            </button></td>
+        </th:block>
+    </tr>
+    </tbody>
+    </table>
+    <button><a th:href="@{/nuevoProducto}">Agregar Nuevo Producto</a></button>
+    <button><a th:href="@{/seleccion}">Volver al menu principal</a></button>
+</body>
+</html>
+
+

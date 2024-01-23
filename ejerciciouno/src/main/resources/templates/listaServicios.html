@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Servicios</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1 th:text="${titulo}">default</h1>
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Duracion</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="servicio : ${servicios}">
+        <th:block th:if="${servicio != null}">
+            <td th:text="${servicio.idServicio}"></td>
+            <td th:text="${servicio.codigoEanServicio}"></td>
+            <td th:text="${servicio.nombreServicio}"></td>
+            <td th:text="${servicio.descripcionServicio}"></td>
+            <td th:text="${servicio.precioServicio}"></td>
+            <td th:text="${servicio.duracionServicio}"></td>
+            <td > <button><a th:href="@{/eliminarServicio/{id}(id=${servicio.idServicio})}">Eliminar</a></button></td >
+        </th:block>
+    </tr>
+    </tbody>
+</table>
+<button><a th:href="@{/nuevoServicio}">Agregar Nuevo Servicio</a></button>
+<button><a th:href="@{/seleccion}">Volver al menu principal</a></button>
+
+
+</body>
+</html>

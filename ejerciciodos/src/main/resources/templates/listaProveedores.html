@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Proveedores</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1 th:text="${titulo}">default</h1>
+    <table>
+        <thead>
+        <tr>
+            <th> ID</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>email</th>
+            <th>Sitio Web</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="proveedor , iterStat: ${proveedores}">
+                <th:block th:if="${proveedor != null}">
+                    <td th:text="${proveedor.idProveedor}"></td>
+                    <td th:text="${proveedor.nombreProveedor}"></td>
+                    <td th:text="${proveedor.telefonoProveedor}"></td>
+                    <td th:text="${proveedor.direccionProveedor}"></td>
+                    <td th:text="${proveedor.emailProveedor}"></td>
+                    <td th:text="${proveedor.webProveedor}"></td>
+                    <td th:text="${estadosString[iterStat.index]}"></td>
+                    <td>
+                        <button><a th:href="@{/eliminarProveedor/{id}(id=${proveedor.idProveedor})}">Eliminar</a>
+                        </button>
+                    </td>
+                </th:block>
+            </tr>
+        </tbody>
+    </table>
+    <button><a th:href="@{/nuevoProveedor}">Agregar un nuevo Proveedor</a></button>
+</body>
+</html>
